@@ -56,10 +56,10 @@ namespace LINQ
         };
 
             List<string> descend = names.OrderByDescending(i => i).ToList();
-            foreach(string name in descend)
-            {
-                Console.WriteLine(name);
-            }
+                foreach(string name in descend)
+                {
+                    Console.WriteLine(name);
+                }
 
 
         // Build a collection of these numbers sorted in ascending order
@@ -67,6 +67,12 @@ namespace LINQ
         {
              15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
         };
+
+            List<int> ascendingList = numbers2.OrderBy(n => n).ToList();
+                foreach(int n in ascendingList)
+            {
+                Console.WriteLine(n);
+            }
 
         }
     }
