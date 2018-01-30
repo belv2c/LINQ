@@ -105,7 +105,19 @@ namespace LINQ
             double mostExpensive = prices.Max();
             Console.WriteLine($"Our most expensive product costs ${mostExpensive}.");
             Console.ReadLine();
-            
+
+        // Partitioning Operations
+
+        //Store each number in the following List until a perfect square is detected.
+
+        List<int> wheresSquaredo = new List<int>()
+        {
+            66, 12, 8, 27, 82, 34, 7, 50, 19, 46, 81, 23, 30, 4, 68, 14
+        };
+
+        int findTheSquare = wheresSquaredo.Find(n => Math.Sqrt(n) % 1 == 0);
+        Console.WriteLine($"A square has been detected at {findTheSquare}.");
+
         }
     }
 }
