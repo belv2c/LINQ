@@ -9,6 +9,7 @@ namespace LINQ
         static void Main(string[] args)
         {
             // Restriction/Filtering options
+
             // Find the words in the collection that start with the letter 'L'
             List<string> fruits = new List<string>()
             {
@@ -40,8 +41,33 @@ namespace LINQ
             foreach (var n in fourSixMultiples)
             {
                 Console.WriteLine(n);
-                Console.ReadLine();
             }
+
+        // Ordering Operations
+
+        // Order these student names alphabetically, in descending order (Z to A)
+        List<string> names = new List<string>()
+        {
+            "Heather", "James", "Xavier", "Michelle", "Brian", "Nina",
+            "Kathleen", "Sophia", "Amir", "Douglas", "Zarley", "Beatrice",
+            "Theodora", "William", "Svetlana", "Charisse", "Yolanda",
+            "Gregorio", "Jean-Paul", "Evangelina", "Viktor", "Jacqueline",
+            "Francisco", "Tre"
+        };
+
+            List<string> descend = names.OrderByDescending(i => i).ToList();
+            foreach(string name in descend)
+            {
+                Console.WriteLine(name);
+            }
+
+
+        // Build a collection of these numbers sorted in ascending order
+        List<int> numbers2 = new List<int>()
+        {
+             15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
+        };
+
         }
     }
 }
