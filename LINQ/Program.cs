@@ -94,7 +94,7 @@ namespace LINQ
 
             double total = purchases.Sum();
             Console.WriteLine($"We have made a total of ${total}.");
-            Console.ReadLine();
+ 
 
             // What is our most expensive product?
             List<double> prices = new List<double>()
@@ -102,6 +102,9 @@ namespace LINQ
                 879.45, 9442.85, 2454.63, 45.65, 2340.29, 34.03, 4786.45, 745.31, 21.76
             };
 
+            double mostExpensive = prices.Max();
+            Console.WriteLine($"Our most expensive product costs ${mostExpensive}.");
+            Console.ReadLine();
             
         }
     }
