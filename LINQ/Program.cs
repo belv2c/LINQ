@@ -13,6 +13,13 @@ namespace LINQ
             public double Balance { get; set; }
             public string Bank { get; set; }
         }
+
+        public class Bank
+        {
+            public string Symbol { get; set; }
+            public string Name { get; set; }
+        }
+
         static void Main(string[] args)
         {
             // Restriction/Filtering options
@@ -39,9 +46,9 @@ namespace LINQ
 
             // Which of the following numbers are multiples of 4 or 6
             List<int> numbers = new List<int>()
-        {
-            15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
-        };
+            {
+                15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
+            };
 
             var fourSixMultiples = numbers.Where(n => n % 2 == 0 || n % 6 == 0);
 
@@ -54,13 +61,13 @@ namespace LINQ
 
             // Order these student names alphabetically, in descending order (Z to A)
             List<string> names = new List<string>()
-        {
-            "Heather", "James", "Xavier", "Michelle", "Brian", "Nina",
-            "Kathleen", "Sophia", "Amir", "Douglas", "Zarley", "Beatrice",
-            "Theodora", "William", "Svetlana", "Charisse", "Yolanda",
-            "Gregorio", "Jean-Paul", "Evangelina", "Viktor", "Jacqueline",
-            "Francisco", "Tre"
-        };
+            {
+                "Heather", "James", "Xavier", "Michelle", "Brian", "Nina",
+                "Kathleen", "Sophia", "Amir", "Douglas", "Zarley", "Beatrice",
+                "Theodora", "William", "Svetlana", "Charisse", "Yolanda",
+                "Gregorio", "Jean-Paul", "Evangelina", "Viktor", "Jacqueline",
+                "Francisco", "Tre"
+            };
 
             List<string> descend = names.OrderByDescending(i => i).ToList();
             foreach (string name in descend)
@@ -71,9 +78,9 @@ namespace LINQ
 
             // Build a collection of these numbers sorted in ascending order
             List<int> numbers2 = new List<int>()
-        {
-             15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
-        };
+            {
+                 15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
+            };
 
             List<int> ascendingList = numbers2.OrderBy(n => n).ToList();
             foreach (int n in ascendingList)
@@ -118,9 +125,9 @@ namespace LINQ
             //Store each number in the following List until a perfect square is detected.
 
             List<int> wheresSquaredo = new List<int>()
-        {
-            66, 12, 8, 27, 82, 34, 7, 50, 19, 46, 81, 23, 30, 4, 68, 14
-        };
+            {
+                66, 12, 8, 27, 82, 34, 7, 50, 19, 46, 81, 23, 30, 4, 68, 14
+            };
 
             int findTheSquare = wheresSquaredo.Find(n => Math.Sqrt(n) % 1 == 0);
             Console.WriteLine($"A square has been detected at {findTheSquare}.");
@@ -154,8 +161,27 @@ namespace LINQ
             foreach (var richPerson in joinedList)
             {
                 Console.WriteLine($"{richPerson.Bank} {richPerson.AmountOfMillionaires}");
+            }
+
+
+            // Create some banks and store in a List
+            List<Bank> banks = new List<Bank>() {
+            new Bank(){ Name="First Tennessee", Symbol="FTB"},
+            new Bank(){ Name="Wells Fargo", Symbol="WF"},
+            new Bank(){ Name="Bank of America", Symbol="BOA"},
+            new Bank(){ Name="Citibank", Symbol="CITI"},
+        };
+
+            var millionaireReport = from customer in customers
+                                    join bank in banks on customer.Bank equals bank.Symbol
+                                    where (customer.Balance >= 1000000)
+                                    select new { CustomerName = customer.Name, CustomerBank = bank.Name };
+
+            foreach (var customer in millionaireReport)
+            {
+                Console.WriteLine($"{customer.CustomerName} at {customer.CustomerBank}");
                 Console.ReadLine();
-            };
+            }
         }
     }
 }
